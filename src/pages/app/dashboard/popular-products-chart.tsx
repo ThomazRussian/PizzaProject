@@ -10,11 +10,11 @@ import {
 import { BarChart } from "lucide-react";
 
  const data = [
-    {product: 'Pepperoni', revenue: 40},
-    {product: 'Mussarela', revenue: 30},
-    {product: 'Margherita', revenue: 50},
-    {product: '4 Queijos', revenue: 16},
-    {product: 'Frango frito', revenue: 26},
+    {product: 'Pepperoni', amount: 40},
+    {product: 'Mussarela', amount: 30},
+    {product: 'Margherita', amount: 50},
+    {product: '4 Queijos', amount: 16},
+    {product: 'Frango frito', amount: 26},
  ]
 
 
@@ -80,14 +80,14 @@ export function PopularProductsChart () {
                                 : data[index].product}{' '}
                                 ({value})
                             </text>
-                        )
+                        );
                     }}
                 >
-                            {data.map((_, index)=>{
-                                return (
+                            {data.map((_, idx)=> {
+                                return(
                                     <Cell 
-                                    key={`cell-${index}`} 
-                                    fill={COLORS[index]} 
+                                    key={`cell-${idx}`} 
+                                    fill={COLORS[idx]} 
                                     className="stroke-background hover:opacity-80" 
                                     />
                                 )
