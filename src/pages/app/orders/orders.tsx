@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/table"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Search, X } from "lucide-react"
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { OrderTableRow } from "./order-table-row"
+import { OrderTableFilters } from "./order-table-filters";
+import { Pagination } from "@/components/pagination";
 
 
 export function Orders () {
@@ -12,14 +13,8 @@ export function Orders () {
             <h1 className="text-3xl font-bold tracking-tight">
                 Pedidos
             </h1>
-        </div>
         <div className="space-y-2.5">
-            <form className="flex items-center gap-2">
-                <span className="text-sm font-semibold">
-                    Filtros
-                </span>
-                <input placeholder="Nome do cliente" className="h-8 w-[320px]"/>
-            </form>
+            <OrderTableFilters />
             <div className="border rounded-md">
                 <Table>
                     <TableHeader>
@@ -37,57 +32,17 @@ export function Orders () {
                     <TableBody>
                         {Array.from({ length: 10}).map((_, i) => {
                             return (
-                                <TableRow key={i}>
-                            <TableCell>
-                                <Button variant="outline" size="xs">
-                                    <Search className="h-3 w-3" />
-                                    <span className="sr-only">Detalhes do pedido</span>
-                                </Button>
-                            </TableCell>
-                            <TableCell className="font-mono text-xs font-medium">
-                                11231dqwd12d7122
-                            </TableCell>
-                            <TableCell className="text-muted-foreground">
-                                há 15 minutos
-                            </TableCell>
-                            <TableCell>
-                                <div className="flex items-center gap-2">
-                                    <span className="h-2 w-2 rounded-full bg-slate-400" />
-                                    <span>
-                                        Pendente
-                                    </span>
-                                </div>
-                            </TableCell>
-                            <TableCell className="font-medium">
-                                Thomaz Russian Aguiar
-                            </TableCell>
-                            <TableCell className="font-medium">R$ 149,98</TableCell>
-                            <TableCell>
-                                <Button variant="outline" size="xs">
-                                    <ArrowRight className="h-3 mr-2 w-3" />
-                                    Aprovar
-                                </Button>                              
-                            </TableCell>
-                            <TableCell>
-                                <Button variant="ghost" size="xs">
-                                    <X className="h-3 mr-2 w-3" />
-                                    Cancelar
-                                </Button>
-                            </TableCell>
-                        </TableRow>
+                                <OrderTableRow key ={i} />
                             );
                         })}
                             
                     </TableBody>
-                    
                 </Table>    
-            
-                
-                
             </div>
-            
+
+            <Pagination pageIndex={0} totalCount={105} perPage={10} />
         </div>
-        
+    </div>
         </>
     )
 
